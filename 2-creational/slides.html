@@ -1,0 +1,246 @@
+---
+title: Creational Patterns
+layout: remark
+permalink: /creational
+---
+
+class: center, middle, inverse
+
+# Creational Patterns
+## Diseño Avanzado Orientado a Objetos
+
+---
+
+# Creational Patterns
+
+- Factory Methods
+- Factory
+- Builder
+- Kit (o Prototype)
+- Singleton
+
+---
+
+# Problemas
+
+- No se pueden agregar parámetros en el constructor de una superclase sin modificar el código de las subclases.
+
+![](2-creational/constructors.png)
+
+---
+
+# Problemas
+
+- No puede haber dos métodos con parámetros idénticos.
+
+--
+
+- Los constructores solo pueden devolver un objeto del tipo de la clase a la cual pertenecen.
+
+---
+
+# Factory Methods
+
+- Método estático que devuelvo el mismo tipo que la clase a la que pertenece.
+
+--
+
+- Posibles nombres: **valueOf**, **create**, **getInstance**, **make**.
+
+--
+
+ - *valueOf*: lo que devuelve es considerado un valor
+ - *create/make*: da mas la idea de construcción
+ - *getInstance*: se pide una instancia que no se sabe si esta o no creada
+
+---
+
+# Factory Methods
+## Ejemplo
+
+```
+public class Boolean {
+
+  private final boolean value;
+
+  private Boolean(boolean value) { this.value = value; }
+
+  public static Boolean valueOf(boolean b) {
+    return b ? TRUE : FALSE;
+  }
+
+  public static final Boolean TRUE = new Boolean(true);
+  public static final Boolean FALSE = new Boolean(false);
+}
+```
+
+---
+
+# Virtual Constructor
+
+- Define una interfaz para crear un objeto, pero deja a las subclases decidir que clase instanciar
+ - Se define una interfaz.
+ - Se define un método en la superclase que devuelve un objeto del tipo de esa interfaz.
+ - Las subclases que hereden esta clase redefiniran este metodo devolviendo una instancia de una clase que implemente esta interfaz.
+
+---
+
+# Factory
+
+- Clase que devuelve una instancia de una de varias posibles clases de acuerdo a los datos que se le proveen
+
+- ¿Cuándo usarlo?
+ - Una clase no puede anticipar el tipo de los objetos que debe crear.
+ - Una clase deja a sus subclases decidir el tipo de los objetos a crear.
+ - Se quiere localizar el conocimiento de que clase crear.
+
+---
+
+# Factory
+## Ejemplo
+
+```
+public class ShapeFactory {
+
+    Square createSquare(double l) { ... }
+
+    Polygon createPolygon(List<Point> points) { ... }
+
+    Shape createFromFile(String fileName) { ... }
+
+}
+```
+
+---
+
+# Abstract Factory
+
+- La clase Factory puede ser una clase abstracta o una interfaz. Esto le da un grado mas de polimorfismo.
+
+- Facilita el intercambio de familias de clases (jerarquías paralelas).
+
+---
+
+# Kit (o Prototype)
+
+- Los objetos se crean copiando un prototipo.
+
+- ¿Cuándo usarlo?
+
+ - La creación de una instancia es muy costosa en tiempo o recursos.
+ - Cuando las instancias de una clase tienen sólo un número determinado de combinaciones de estado.
+
+---
+
+ # Kit (o Prototype)
+ ## Ejemplo
+
+ ```
+for (int i = 1; i < 10; i++) {
+  final MyObject next = prototype.clone();
+  next.setX(i);
+  objects.accept(next);
+}
+
+// O mejor
+for (int i = 1; i < 10; i++) {
+    objects.accept(prototype.withX(i));
+}
+```
+
+---
+
+# Builder
+
+- Encapsula la construcción de un objeto complejo.
+
+--
+
+- Construye el objeto de acuerdo a los datos que se le proporcionan.
+
+--
+
+- ¿Cuándo usarlo?
+ - Se necesitan validar los datos de un objeto antes de construirlo.
+
+--
+
+ - Los datos del objeto a construir se obtienen de forma gradual (por ejemplo al parsear un XML).
+
+---
+
+ # Builder
+ ## Ejemplo
+
+```
+public class ReservationBuilder implements Builder<Reservation> {
+
+  @Override public Reservation build() {
+    // Validate data...
+    return new Reservation(city, date, dollarsPerHead, headCount);
+  }
+
+  public void setCity(String city) { ... }
+
+  public void setDate(Date date) { ... }
+
+  public void setDollarsPerHead(double dollarsPerHead) { ... }
+
+  public void setHeadCount(int headCount) { ... }
+}
+```
+
+---
+
+# Singleton
+
+- Clase de la cual existe una sola instancia y no puede existir más de una.
+
+--
+
+- Provee un punto de acceso global a esta única instancia.
+
+--
+
+- Si se quiere que deje de ser un singleton el cambio a realizar es muy simple.
+
+---
+
+# Singleton
+## Ejemplo
+
+```
+public class ModelRetriever {
+    private ModelRetriever() {
+        // ...
+    }
+
+    private static ModelRetriever instance;
+
+    public static synchronized ModelRetriever getInstance() {
+        if (instance == null) instance = new ModelRetriever();
+        return instance;
+    }
+}
+```
+
+---
+
+# Singleton
+## Ejemplo usando holder-class
+
+```
+public class ModelRetriever {
+    private ModelRetriever() {
+        // ...
+    }
+
+    public static ModelRetriever getModelRetriever() {
+        return InstanceHolder.instance;
+    }
+
+    private static class InstanceHolder {
+        private static final ModelRetriever instance = new ModelRetriever();
+    }
+}
+```

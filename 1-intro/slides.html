@@ -1,5 +1,5 @@
 ---
-title: Historia de la web
+title: Introducción
 layout: remark
 permalink: /intro
 ---
@@ -8,7 +8,6 @@ class: center, middle, inverse
 
 # Introducción
 ## Diseño Avanzado Orientado a Objetos
-D.A.O.O.
 
 ---
 
@@ -85,92 +84,53 @@ La noción de que se debe “depender de abstracciones, no depender de implement
 ???
 
 - Layers: grouping of related functionality within an application into distinct layers that are stacked vertically on top of each other.
-
-
----
-
-# 1989-1991
-
-- 1989: Berners Lee envía una propuesta al CERN para el desarrollo un sistema basado en documentos de Hipertexto que permitiría compartir información a los investigadores del CERN.
-- 1990: Se abre el uso de Internet para fines comerciales, cuando redes comerciales independientes comenzaron a crecer.
-- 1990: Berners Lee crea HTTP (Hypertext Tranfer Protocol), URI (Uniform Resource Locator), un cliente, define HTML (Hypertext Markup Language) y un server.
-- 1991: Lee hace público su cliente y el servidor en Internet.
-
-???
-
-CERN: European Organization for Nuclear Research
-
-Sir Timothy John Berners-Lee is an English computer scientist, best known as the inventor of the World Wide Web.
-He made a proposal for an information management system in March 1989, and he implemented the first successful communication between a Hypertext Transfer Protocol (HTTP) client and server via the Internet sometime around mid-November of that same year.
-Berners-Lee is the director of the World Wide Web Consortium (W3C), which oversees the Web's continued development. He is also the founder of the World Wide Web Foundation.
-
-- HTML: HyperText Markup Language. The markup (formatting) language for the Web.
-- URI: Uniform Resource Identifier. A kind of “address” that is unique and used to identify to each resource on the Web. It is also commonly called a URL.
-- HTTP: Hypertext Transfer Protocol. Allows for the retrieval of linked resources from across the Web.
+- SOA: is a style of software design where services are provided to the other components by application components, through a communication protocol over a network.
+- EDA: message-driven architecture, software architecture pattern promoting the production, detection, consumption of, and reaction to events.
+- Session: Client Session State, Server Session State, Database Session State
 
 ---
 
-# WORLD WIDE WEB BROWSER
+# Design Patters
 
-![](1-history/wwwbrowser.png)
+## Creational Patterns
+*Deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.*
 
----
-
-# 1991-1993
-
-- 1993: El numero de visitantes en “info.cern.ch” era de 10.000 hits por día.
-- 1993: Mark Adreesen un  estudiantes de Universidad de Illinois crea el Browser Mosaic.
-
----
-
-# MOSAIC
-
-![](1-history/mosaic.png)
+- Abstract Factory:
+- Builder
+- Factory
+- Prototype
+- Singleton
 
 ---
 
-# 1994-1998
+# Design Patters
 
-- 1994: Jim Clark y Mark Adreesen fundan Netscape.
-- 1994: Se crea lo que se daría a llamar “World Wide Web consortium” (W3c).
-- 1995: La política de privatización de NSF culmina en abril, y todo el tráfico queda en mano de redes comerciales como ser AOL, Prodigy, etc.
-- 1995: Microsoft lanza su primer versión de Internet Explorer.
-- 1998: El Internet Explorer se integra en Windows 98.
+## Structural Patterns
+*Ease the design by identifying a simple way to realize relationships between entities.*
 
-???
-
-History of IE: http://www.networkworld.com/article/2897729/software/a-visual-history-of-microsofts-internet-explorer.html
-
----
-
-# Symptoms of rotting design
-
-- Rigidity
-
-Every change causes a cascade of subsequent changes in dependent modules
-
---
-
-- Fragility
-
-Breaks in many places when a change is made
-
---
-
-- Immobility
-
-Reuse is more work than creating from scratch
-
---
-
-- Viscosity: The law of least resistance when faced with a choice
-
- – Design viscosity: Hacks are easier/faster than preserving the design
- – Environment viscosity: Slow cycle time -> fastest choice
+- Adapter
+- Bridge
+- Composite
+- Decorator
+- Façade
+- Flyweight
+- Proxy
 
 ---
 
-# BIBLIOGRAFÍA Y LINKS
+# Design Patters
 
-- Design Principles (https://www.it.uu.se/edu/course/homepage/ood/ht12/overview/principles/Lecture4.pdf)
-- Design Rot (http://fadeyev.net/design-rot/)
+## Behavioral Patterns
+*Identify common communication patterns between objects. Increase flexibility in carrying out this communication.*
+
+- Chain of Resp.
+- Command
+- Interpreter
+- Iterator
+- Mediator
+- Memento
+- Observer
+- State
+- Strategy
+- Template
+- Visitor

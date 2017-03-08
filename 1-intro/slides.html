@@ -1,0 +1,176 @@
+---
+title: Historia de la web
+layout: remark
+permalink: /intro
+---
+
+class: center, middle, inverse
+
+# Introducción
+## Diseño Avanzado Orientado a Objetos
+D.A.O.O.
+
+---
+
+# Aprender de los errores de los demás
+
+- Design Principles
+- Architectural Pattern
+- Design Patterns
+
+---
+
+# Sofware Rot
+
+- Increased difficulty to adapt and maintain (software becoming less responsive or buggier through time)
+
+--
+
+- Causes
+ - Communication / documentation breakdown
+
+--
+
+ - Design is not resilient in the face of change
+
+--
+
+- Code written carelessly with little thought for readability, maintenance and extension will rot faster than code written with a long term view
+
+---
+
+# Design Principles
+
+- Decomposition
+- Abstraction and Information Hiding
+- Modularity
+- Depencency Management
+- SOLID principles
+- Don’t repeat yourself
+- Occam’s Razor
+- KISS
+
+???
+- Abstraction, information hiding, and encapsulation are very different, but highly-related, concepts. One could argue that abstraction is a technique that helps us identify which specific information should be visible, and which information should be hidden.
+
+- SOLID
+ - S	SRP	(Single responsibility principle)
+La noción de que un objeto solo debería tener una única responsabilidad.
+ - O	OCP	(Open/closed principle)
+La noción de que las “entidades de software" deben estar abiertas para su extensión, pero cerradas para su modificación.
+ - L	LSP	(Liskov substitution principle)
+La noción de que los “objetos de un programa deberían ser reemplazables por instancias de sus subtipos sin alterar el correcto funcionamiento del programa”.
+ - I	ISP	(Interface segregation principle)
+La noción de que “muchas interfaces cliente específicas son mejores que una interfaz de propósito general”.
+ - D	DIP	(Dependency inversion principle)
+La noción de que se debe “depender de abstracciones, no depender de implementaciones”.
+
+- DRY: besides using methods and subroutines in code, rely on code generators, automatic build systems, and so on. Apply it quite broadly to include database schemas, test plans, build system, even documentation.
+
+- Occam's Razor: 14th-century logician and theologian William of Ockham states that the **simplest explanation is usually true**.
+
+- KISS: simplicity should be a key goal in design and unnecessary complexity should be avoided
+
+---
+
+# Architectural Patterns
+
+- Layers
+- MVC
+- Pipe and Filter
+- SOA
+- Event-Driven Architecture
+- Session
+
+???
+
+- Layers: grouping of related functionality within an application into distinct layers that are stacked vertically on top of each other.
+
+
+---
+
+# 1989-1991
+
+- 1989: Berners Lee envía una propuesta al CERN para el desarrollo un sistema basado en documentos de Hipertexto que permitiría compartir información a los investigadores del CERN.
+- 1990: Se abre el uso de Internet para fines comerciales, cuando redes comerciales independientes comenzaron a crecer.
+- 1990: Berners Lee crea HTTP (Hypertext Tranfer Protocol), URI (Uniform Resource Locator), un cliente, define HTML (Hypertext Markup Language) y un server.
+- 1991: Lee hace público su cliente y el servidor en Internet.
+
+???
+
+CERN: European Organization for Nuclear Research
+
+Sir Timothy John Berners-Lee is an English computer scientist, best known as the inventor of the World Wide Web.
+He made a proposal for an information management system in March 1989, and he implemented the first successful communication between a Hypertext Transfer Protocol (HTTP) client and server via the Internet sometime around mid-November of that same year.
+Berners-Lee is the director of the World Wide Web Consortium (W3C), which oversees the Web's continued development. He is also the founder of the World Wide Web Foundation.
+
+- HTML: HyperText Markup Language. The markup (formatting) language for the Web.
+- URI: Uniform Resource Identifier. A kind of “address” that is unique and used to identify to each resource on the Web. It is also commonly called a URL.
+- HTTP: Hypertext Transfer Protocol. Allows for the retrieval of linked resources from across the Web.
+
+---
+
+# WORLD WIDE WEB BROWSER
+
+![](1-history/wwwbrowser.png)
+
+---
+
+# 1991-1993
+
+- 1993: El numero de visitantes en “info.cern.ch” era de 10.000 hits por día.
+- 1993: Mark Adreesen un  estudiantes de Universidad de Illinois crea el Browser Mosaic.
+
+---
+
+# MOSAIC
+
+![](1-history/mosaic.png)
+
+---
+
+# 1994-1998
+
+- 1994: Jim Clark y Mark Adreesen fundan Netscape.
+- 1994: Se crea lo que se daría a llamar “World Wide Web consortium” (W3c).
+- 1995: La política de privatización de NSF culmina en abril, y todo el tráfico queda en mano de redes comerciales como ser AOL, Prodigy, etc.
+- 1995: Microsoft lanza su primer versión de Internet Explorer.
+- 1998: El Internet Explorer se integra en Windows 98.
+
+???
+
+History of IE: http://www.networkworld.com/article/2897729/software/a-visual-history-of-microsofts-internet-explorer.html
+
+---
+
+# Symptoms of rotting design
+
+- Rigidity
+
+Every change causes a cascade of subsequent changes in dependent modules
+
+--
+
+- Fragility
+
+Breaks in many places when a change is made
+
+--
+
+- Immobility
+
+Reuse is more work than creating from scratch
+
+--
+
+- Viscosity: The law of least resistance when faced with a choice
+
+ – Design viscosity: Hacks are easier/faster than preserving the design
+ – Environment viscosity: Slow cycle time -> fastest choice
+
+---
+
+# BIBLIOGRAFÍA Y LINKS
+
+- Design Principles (https://www.it.uu.se/edu/course/homepage/ood/ht12/overview/principles/Lecture4.pdf)
+- Design Rot (http://fadeyev.net/design-rot/)

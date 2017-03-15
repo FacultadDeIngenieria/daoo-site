@@ -8,5 +8,5 @@ permalink: /practice/normalization
 
 1. Rediseñar el trabajo anterior acorde a las nuevas interfaces provistas.
 
-- [DAOO Sql](/3-structural/daoo-sql.jar)
-- [DAOO Sql Sources](/3-structural/daoo-sql-src.jar)
+- [DAOO Sql](../3-structural/daoo-sql.jar)
+- [DAOO Sql Sources](../3-structural/daoo-sql-src.jar)

@@ -5,6 +5,7 @@
 
 1. [Introducción](intro) (08/03/2017)
 2. [Creational Patterns](creational) (08/03/2017)
+3. [Structural Patterns](structural) (15/03/2017)
 
 ## Trabajos Prácticos:
 

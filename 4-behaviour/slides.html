@@ -1,0 +1,294 @@
+---
+title: Behavioural Patterns
+layout: remark
+permalink: /behaviour
+---
+
+class: center, middle, inverse
+
+# Behavioural Patterns
+## Diseño Avanzado Orientado a Objetos
+
+---
+
+# Behavioural Patterns
+
+*Identify common communication patterns between objects. Increase flexibility in carrying out this communication.*
+
+---
+
+# Behavioural Patterns
+
+- Delegate
+- Interpreter
+- Observer
+- Flyweight
+- Iterator
+- Command
+
+---
+
+# Delegate
+
+- Semejante al composite, sólo que en general este último es de arriba para abajo y el delegate es de abajo para arriba.
+
+--
+
+- Utiliza composición y fowardea un mensaje.
+
+--
+
+- El objeto que fowardea el mensaje se pasa a si mismo como un argumento del metodo del objeto delegado, que es el que realiza el trabajo.
+
+---
+
+# Delegate
+
+- Un objeto envia un request a un `objectA`.
+- `objectA` fowardea el request a `objectB`, el delegado.
+- El delegado, es decir `objectB` procesa el request y realiza alguna acción.
+
+![](4-behaviour/delegate.jpeg)
+
+---
+
+# Delegate: Multiple Inheritance
+
+![](4-behaviour/delegate-multiple-inheritance.jpeg)
+
+---
+
+# Interpreter
+
+Dado un lenguaje define una representación para su gramática junto con un intérprete que usa esta representación para interpretar las sentencias del lenguaje.
+
+.center[![](4-behaviour/interpreter.jpeg)]
+
+???
+
+- java.util.Pattern and subclasses of java.text.Format are some of the examples of interpreter pattern used in JDK.
+- https://springframework.guru/gang-of-four-design-patterns/interpreter-pattern/
+
+---
+
+# Interpreter
+
+- Se puede pensar como un caso específico del composite.
+- Se utiliza para cualquier tipo de objeto interpretativo creado en runtime.
+- Caso tipico: filtros.
+- Objetos lightweight pero flexibles.
+
+.center[![](4-behaviour/interpreter-example.png)]
+
+???
+
+Caso tipico: filtros?
+
+---
+
+# Observer
+
+Se define una dependencia de uno a muchos entre objetos, de forma tal que cuando un objeto cambia su estado, todos los objetos que dependan de él sean notificados y actualizados automaticamente.
+
+.center[![](4-behaviour/observer.png)]
+
+---
+
+# Observer
+
+- Desacopla la interacción entre el objeto que cambia y los objetos a actualizar.
+
+--
+
+- Facilita el agregado de nuevos objetos que dependan del objeto observador.
+
+--
+
+- Se puede especificar el tipo de notificación a enviar definiendo un conjunto de métodos de update que se invoquen segun el tipo o alcance (scope) del cambio en los observadores.
+
+---
+
+# Observer vs Publish/Subscribe
+
+.center[![](4-behaviour/observer-pub-sub.jpg)]
+
+.center[Publisher -> Dispatcher -> Subscriber]
+
+---
+
+# Flyweight
+
+Se tiene un conjunto muy numeroso de objetos muy similares entre sí, o un conjunto de objetos que se crean y se destruyen con mucha frecuencia.
+
+.center[![](4-behaviour/flyweight-trees.png)]
+
+---
+
+# Flyweight
+
+La idea es factorizar la parte en común de estos objetos.
+
+.center[![](4-behaviour/flyweight-tree-model.png)]
+
+---
+
+# Flyweight
+
+.center[![](4-behaviour/flyweight.gif)]
+
+---
+
+# Iterator
+
+Provee una forma secuencial de acceder los elementos de un objeto compuesto sin exponer la representación subyacente.
+
+.center[![](4-behaviour/iterator.gif)]
+
+---
+
+# Iterator: Polimorfismo
+
+- Provee una interface uniforme para recorrer estructuras agregadas diferentes.
+
+--
+
+- Simplifican la interfaz del objeto agregado.
+
+--
+
+- Soporta diferentes formas de recorrer conjunto de cosas usando diferentes iterators.
+
+--
+
+- Usado en el framework de Collections.
+
+---
+
+# Iterator: Concurrencia
+
+- Muchos clientes recorriendo el mismo objeto simultaneamente: cada instancia guarda su estado.
+- Concurrent modification exception: se produce al tratar de modificar el mismo iterator simultaneamente (fail fast).
+  - Utilizar copias (java.util.concurrent)
+  - Observer: detectar los cambios y recalcular el iterador.
+
+---
+
+# Iterator: example
+
+```java
+interface Iterator<E> {
+  boolean hasNext();
+  E next();
+}
+
+interface Predicate<E> {
+  boolean check(E o);
+}
+```
+
+---
+
+# Iterator: example
+
+```java
+class FilterIterator<E> implements Iterator<E> {
+
+  FilterIterator(Iterator<E> it, Predicate<E> p) {
+    this.it = it;
+    this.p = p;
+    advance();
+  }
+
+  public E next() {
+    Object result = next;
+    advance();
+    return result;
+  }
+
+  public boolean hasNext() { return next != null; }
+
+  private void advance() {
+    while (it.hasNext()) {
+      E o = it.next();
+      if (p.check(o)) {
+        next = o;
+        return;
+      }
+    }
+}
+```
+
+---
+
+# Iterator: example
+
+```java
+Iterator<Person> it = new FilterIterator<Person>(peopleIterator(), new Predicate() {
+  boolean check(Person p) {
+    p.getSalary() > 5000;
+  }
+}
+```
+
+???
+
+Is FilterIterator this a decorator?
+
+---
+
+# Command
+
+- Encapsula un request en un objeto.
+
+--
+
+- Desacopla la operación del objeto que la realiza.
+
+--
+
+- Facilita el agregado de nuevos commands ya que no hay que modificar las clases existentes.
+
+--
+
+.center[![](4-behaviour/command.jpeg)]
+
+---
+
+# Command
+
+- Composite commands.
+- Posibilidad de definir macros.
+- Encolar o loggear requests.
+- Undoable redoable operations (historia).
+- Playback.
+- Actions = command + prototype.
+- Manejo centralizado de acciones: utilizando un Singleton.
+
+---
+
+# Command: Ejemplo editor de texto
+
+```java
+class InsertChar implements Command {
+
+  InsertChar(String line, int pos, char c) {
+    this.line = line;
+    this.pos = pos;
+    this.c = c;
+  }
+
+  public void doIt() {
+    line = line.substring(0, pos) + c + line.substring(pos);
+  }
+
+  public void undoIt() {
+    line = line.substring(0, pos) + line.substring(pos +1);
+  }
+}
+```
+
+```java
+Command c = new InsertChar(line, pos, c);
+c.doIt();
+history.add(c);
+```

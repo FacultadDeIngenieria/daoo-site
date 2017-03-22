@@ -25,6 +25,7 @@ class: center, middle, inverse
 - Flyweight
 - Iterator
 - Command
+- Visitor
 
 ---
 
@@ -288,7 +289,43 @@ class InsertChar implements Command {
 ```
 
 ```java
-Command c = new InsertChar(line, pos, c);
+final Command c = new InsertChar(line, pos, c);
 c.doIt();
 history.add(c);
 ```
+
+---
+
+# Double dispatch
+
+- El Double-Dispatch es un mecanismo que “despacha” el llamado a una función a diferentes funciones concretas dependiendo el tipo de dato dinámico de ambos objetos implicados en la llamada.
+
+- Lenguajes como Java no disponen de tal mecanismo ya que son Single-Dispatch y solo controlan el tipo dinámico del objeto al cual se le invoca la llamada.
+
+---
+
+# Visitor
+
+- Permite definir una operación sobre objetos de una jerarquía de clases sin modificar las clases sobre las que opera.
+
+--
+
+- Separa la operación de la estructura del objeto.
+
+--
+
+- Simula el Double-Dispatch en un lenguaje convencional orientado a objetos Single-Dispatch.
+
+---
+
+# Visitor
+
+- Se tiene un conjunto de clases que conforman la estructura de un objeto.
+
+--
+
+- Cada una de estas clases tiene un método **accept()** que recibe el **visitor** como argumento.
+
+--
+
+- El visitor es una interfaz que tiene un método **visit()** diferente para cada clase.

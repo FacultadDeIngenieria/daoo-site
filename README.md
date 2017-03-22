@@ -12,6 +12,7 @@
 
 1. [Factories, Builders & Fluent Interfaces](practice/creational) (08/03/2017)
 2. [Factories, Builders & Fluent Interfaces](practice/normalization) (15/03/2017)
+3. [Visitor](practice/visitor) (22/03/2017)
 
 ---
 

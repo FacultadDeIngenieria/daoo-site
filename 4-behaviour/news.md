@@ -6,9 +6,49 @@ permalink: /practice/news
 
 # Práctica 6: NewsStream
 
-Usando RxJava, implementar un NewsStream que combine y devuelva los nuevos articulos de diferentes ArticleProviders.
+Implementar diferentes ResourceProviders. 
+Como implementación requerida habrá que implementar un `ResourceProvider` para La Nación y otro para Clarín, obteniendo los artículos del home como `Resources`.
 
-La implementación de los ArticleProviders debera ser provista usando injección de dependencia o services de java. Las implementaciones requeridas serán scrappers del home de La Nación y Clarín.
+```
+interface Resource {
+	String link();
+	String label();
+}
+```
 
-- [DAOO Reactive](../3-structural/daoo-reactive.jar)
-- [DAOO Reactive Sources](../3-structural/daoo-reactive-src.jar)
+```
+interface ResourceProvider {
+	Iterable<Resource> resources();
+	Duration interval();
+}
+```
+
+Implementar un ResourceStream que reciba un ResourceProvider vía constructor y se configure con un tick de intervalo específico.
+
+```
+class ResourceStream extends Observable<ResourceChange> {
+	ResourceStream(ResourceProvider provider) {
+		// ...
+	}
+	// ...
+}
+```
+
+Este stream deberá manejar internamente el estado de los recursos del provider y emitir ResourceChanges por cada resource que se agregue, se modifique o se borre.
+
+```
+interface ResourceChange {
+	Resource resource();
+	ChangeType type();
+}
+```
+
+```
+enum ChangeType {
+	ADD, REMOVE, MODIFY
+}
+```
+
+Implementar un NewsStream que extienda de Observable<ResourceChange> y combine todas las instancias de ResourceStream que se creen por cada provider configurado en un Multibinder<ResourceProvider>.
+
+![Merge Streams](../4-behaviour/merge.png)

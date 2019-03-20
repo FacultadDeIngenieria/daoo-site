@@ -11,7 +11,12 @@ permalink: /practice/normalization
 - [DAOO Sql](../3-structural/daoo-sql.jar)
 - [DAOO Sql Sources](../3-structural/daoo-sql-src.jar)
 
+**Ejemplo de uso**
 ```
+...
+import static daoo.query.impl.QueryBuilder.query;
+import static daoo.query.impl.TableFactory.*;
+
 public class Main {
     public static void main(String[] args) {
         final Table t = table("student");

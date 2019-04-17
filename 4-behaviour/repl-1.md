@@ -1,14 +1,14 @@
 ---
-title: Práctica 3 - Visitor
+title: Práctica 4 - REPL
 layout: practice
 permalink: /practice/repl-1
 ---
 
-# Práctica 4: Repl Console (I)
+# Práctica 4: REPL Console (I)
 
 1- Implementar las interfaces declaradas en el paquete ‘daoo.repl’.
 
-2- Implementar el loop de Repl. Lograr un comportamiento similar a:
+2- Implementar el loop de REPL. Lograr un comportamiento similar a:
 
 ```java
 public static void main(String[] args) {

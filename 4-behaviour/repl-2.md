@@ -4,7 +4,7 @@ layout: practice
 permalink: /practice/repl-2
 ---
 
-# Práctica 4: Repl Console (II)
+# Práctica 4: REPL Console (II)
 
 1- Agregar soporte para declaración de variables (soportar undo).
 

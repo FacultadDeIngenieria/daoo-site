@@ -14,7 +14,7 @@
 2. [Factories, Builders & Fluent Interfaces](practice/normalization) (20/03/2019)
 3. [Visitor](practice/visitor) (27/03/2019)
 4. [Repl Console](practice/repl-1) (17/04/2019)
-<!-- 5. [Repl Console II](practice/repl-2) (05/04/2019) -->
+5. [Repl Console II](practice/repl-2) (24/04/2019)
 <!-- 6. [News Stream](practice/news) (26/04/2019) -->
 
 ---

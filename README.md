@@ -7,6 +7,7 @@
 2. [Creational Patterns](creational) (13/03/2019)
 3. [Structural Patterns](structural) (20/03/2019)
 4. [Behavioural Patterns](behaviour) (27/03/2019) 
+5. [Peroperty Testing](testing) (22/05/2019) 
 
 ## Trabajos Prácticos:
 
@@ -15,6 +16,7 @@
 3. [Visitor](practice/visitor) (27/03/2019)
 4. [Repl Console](practice/repl-1) (17/04/2019)
 5. [Repl Console II](practice/repl-2) (24/04/2019)
+6. [Peroperty Testing](practice/testing) (22/05/2019) -->
 <!-- 6. [News Stream](practice/news) (26/04/2019) -->
 
 ---

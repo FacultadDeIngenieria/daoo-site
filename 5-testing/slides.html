@@ -100,7 +100,7 @@ Not everything under the sun can be automated.
 
 # Parametrized testings
 
-- When running a parameterized test class, instances are created for the cross-product of the test methods and the test data elements.
+When running a parameterized test class, instances are created for the cross-product of the test methods and the test data elements.
 
 ```
 @RunWith(Parameterized.class)
@@ -117,7 +117,7 @@ public class FibonacciTest {
     @Parameter(1) public int fExpected;
 
     @Test public void test() {
-    assertEquals(fExpected, Fibonacci.compute(fInput));
+        assertEquals(fExpected, Fibonacci.compute(fInput));
     }
 }
 
@@ -130,7 +130,6 @@ public class Fibonacci {
 
 # Property based testing
 
-Why only four test cases? Is that enough? How much is enough?
 
 ```
 BOOST_AUTO_TEST_CASE(correctlyParsesNumbers) {
@@ -141,11 +140,13 @@ BOOST_AUTO_TEST_CASE(correctlyParsesNumbers) {
 }
 ```
 
+Why only four test cases? Is that enough? How much is enough?
+
 ---
 
 # Property based testing
 
-## Generating test cases so you don’t have to
+Generating test cases so you don’t have to
 
 - QuickCheck, a framework to solve this exact problem for the Haskell programming language.
 - Specify properties of your code that should hold regardless of input.

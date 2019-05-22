@@ -1,29 +1,16 @@
 ---
-title: Práctica 1 - Factories, Builders & Fluent Interfaces
+title: Práctica 5: Property Testing
 layout: practice
-permalink: /practice/creational
+permalink: /practice/testing
 ---
 
-# Práctica 1: Factories, Builders & Fluent Interfaces
+# Práctica 5: Property Testing
 
-1. Utilizando una combinación de estos, el trabajo práctico consiste en programar un builder para queries sql.
-
-**Ejemplo para la composición de un equipo de fútbol**
-
-Teniendo Team, TeamBuilder, Player, PlayerBuilder y un BuilderFactory (con sus members importados estáticamente), el objetivo sería lograr algo similar a:
+Utilizar property testing para testear los siguientes Commandos y Operandos de Repl:
 
 ```
-public class Main {
-    public static void main(String[] args) {
-        final Team team = team("Boca Juniors")
-                            .add(player("Agustín Orión").shirt(1))
-                            .add(player("Juan R. Riquelme").shirt(10).captain())
-                            .add(player("Nicolás Blandi").shirt(25))
-                            .add(coach("Carlos Bianchi"))
-                            .stadium("Alberto J. Armando", "Bombonera")
-                          .build();
-
-        System.out.println("Main.main team = " + team);
-    }
-}
+- DoubleOperandFactory
+- LiteralOperandFactory
+- BinaryArithmeticCommandFactory
+- LengthCommandFactory
 ```

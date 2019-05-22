@@ -1,0 +1,214 @@
+---
+title: Property Testing
+layout: remark
+permalink: /testing
+---
+
+class: center, middle, inverse
+
+# Property Testing
+## Diseño Avanzado Orientado a Objetos
+
+---
+
+# Testing types
+
+There are many different types of testing that you can use to make sure that changes to your code are working as expected.
+Not all testing is equal, though, and we will see here how the main testing practices differ from each other.
+
+???
+https://www.softwaretestinghelp.com/automation-testing-tutorial-2/
+https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
+
+---
+
+# Automation based on the phase of testing
+
+- Unit Tests:
+Low level, close to the source of your application.
+In general quite cheap to automate and can be run very quickly in CI.
+
+- API Tests:
+These tests target the testing based on request and response on which the application is built.
+
+- UI based tests:
+These test the functionality and business logic of the application from the front end of the application.
+
+---
+
+# Testing pyramid cost
+
+![](5-testing/test-pyramid-cost.png)
+
+???
+Not everything under the sun can be automated.
+
+---
+
+# Integration tests
+
+- Verify that different modules or services used by your application work well together.
+- These types of tests are more expensive to run as they require multiple parts of the application to be up and running.
+
+---
+
+# Functional tests
+
+- Can be seen as a type of Integration test.
+- Focus on the business requirements of an application.
+- Non-functional tests define requirements related to performance, security, databases etc.
+
+---
+
+# End-to-end tests
+
+- Replicates a user behavior with the software in a complete application environment.
+- They're expensive to perform and can be hard to maintain.
+
+---
+
+# Performance testing
+
+- Check the behaviors of the system when it is under significant load.
+- These tests are non-functional, and can have the various form to understand the reliability, stability, and availability of the platform.
+- Performance tests are by their nature quite costly to implement and run, but they can help you understand if new changes are going to degrade your system.
+
+---
+
+# Smoke testing
+
+- Basic tests that check basic functionality of the application.
+- They are meant to be quick to execute, and their goal is to give you the assurance that the major features of your system are working as expected.
+- Smoke tests can be useful right after a new build is made to decide whether or not you can run more expensive tests, or right after a deployment to make sure that they application is running properly in the newly deployed environment
+
+---
+
+# Exploratory testing
+
+- The question is whether it is still worth doing manual testing?
+- It should be focused on what is called exploratory testing where the goal is to uncover non-obvious errors.
+- Testing session should not exceed two hours and need to have a clear scope to help testers focus on a specific area of the software
+- Ex: complex user workflows, releasing a significant new capability
+
+---
+
+# Testing pyramid cost
+
+![](5-testing/automated-testing-pyramid-3.png)
+
+---
+
+# Parametrized testings
+
+- When running a parameterized test class, instances are created for the cross-product of the test methods and the test data elements.
+
+```
+@RunWith(Parameterized.class)
+public class FibonacciTest {
+
+    @Parameters public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][] {
+            { 0, 0 }, { 1, 1 }, { 2, 1 }, { 3, 2 }, { 4, 3 }, { 5, 5 }, { 6, 8 }
+        });
+    }
+
+    @Parameter public int fInput;
+
+    @Parameter(1) public int fExpected;
+
+    @Test public void test() {
+    assertEquals(fExpected, Fibonacci.compute(fInput));
+    }
+}
+
+public class Fibonacci {
+    ...
+}
+```
+
+---
+
+# Property based testing
+
+Why only four test cases? Is that enough? How much is enough?
+
+```
+BOOST_AUTO_TEST_CASE(correctlyParsesNumbers) {
+    BOOST_CHECK(parseSignedInteger("0") == 0);
+    BOOST_CHECK(parseSignedInteger("3") == 3);
+    BOOST_CHECK(parseSignedInteger("15") == 15);
+    BOOST_CHECK(parseSignedInteger("1337") == 1337);
+}
+```
+
+---
+
+# Property based testing
+
+## Generating test cases so you don’t have to
+
+- QuickCheck, a framework to solve this exact problem for the Haskell programming language.
+- Specify properties of your code that should hold regardless of input.
+- Randomly generates the input data to try to find a case for which the property fails.
+- When such a case is found, it tries to find a minimal test case by shrinking the input data.
+- This minimal test case is then reported for easy reproduction.
+- This form of testing became known as property based testing and is actually the dominant form of testing in the Haskell ecosystem
+
+---
+
+# Property based testing
+
+- Generating test cases so you don’t have to
+- Property based testing relies on properties.
+- It checks that a function, program or whatever system under test abides by a property
+- Property: something that is alwasy true in your context.
+- Property Testing: try random things, to test something you are sure of.
+
+---
+
+# Property based testing Benefits
+
+- Cover the scope of all possible inputs: it can theorically generate all possible inputs
+- Shrink the input in case of failure: whenever it fails, the framework tries to reduce the input to a smaller input
+- Reproducible and replayable: a seed is produced in order to be able to re-run the test again on the same datasets
+
+???
+
+https://www.youtube.com/watch?v=5pwv3cuo3Qk
+https://medium.com/criteo-labs/introduction-to-property-based-testing-f5236229d237
+https://xebia.com/blog/property-based-testing-java-junit-quickcheck-part-1-basics/
+
+---
+
+# Example
+
+```
+@Property
+public void literalOperand(String operand)
+{
+    final String result = repl(operand);
+    assertThat(result, equalTo(operand));
+}
+```
+
+---
+
+# Generators
+
+When we use entities as our input for our unit tests
+
+```
+@RunWith(JUnitQuickcheck.class)
+public class PostalParcelPBTTest {
+
+    @Property
+    public void deliveryCostsShouldBeMaxWhenWeightIsGreaterThan20(@InRange(minInt = 21) PostalParcel postalParcel){
+        assumeThat(postalParcel.weight(), greaterThan(20));
+
+        assertThat(postalParcel.deliveryCosts(), equalTo(com.baasie.pbt.part1.PostalParcel.MAX_DELIVERY_COSTS));
+    }
+}
+```
+
+???
+https://xebia.com/blog/property-based-testing-java-junit-quickcheck-part-2-generators/

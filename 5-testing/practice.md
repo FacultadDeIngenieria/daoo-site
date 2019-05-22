@@ -1,5 +1,5 @@
 ---
-title: Práctica 5: Property Testing
+title: Práctica 5 - Property Testing
 layout: practice
 permalink: /practice/testing
 ---

@@ -7,7 +7,8 @@
 2. [Creational Patterns](creational) (13/03/2019)
 3. [Structural Patterns](structural) (20/03/2019)
 4. [Behavioural Patterns](behaviour) (27/03/2019) 
-5. [Property Testing](testing) (22/05/2019) 
+5. [Property Testing](testing) (22/05/2019)
+6. [Dependency Injection and Reactive Programming](reactive) (29/05/2019) 
 
 ## Trabajos Prácticos:
 

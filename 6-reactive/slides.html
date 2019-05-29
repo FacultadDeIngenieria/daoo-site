@@ -107,6 +107,33 @@ Employing explicit message-passing enables load management, elasticity, and flow
 
 ---
 
+# Back-preasure
+
+Back pressure (or backpressure) is a resistance or force opposing the desired flow of fluid through pipes, leading to friction loss and pressure drop.
+
+When one component is struggling to keep-up, the system as a whole needs to respond in a sensible way.
+
+It is unacceptable for the component under stress to fail catastrophically or to drop messages in an uncontrolled fashion.
+
+Since it can’t cope and it can’t fail it should communicate the fact that it is under stress to upstream components and so get them to reduce the load.
+
+This back-pressure is an important feedback mechanism that allows systems to gracefully respond to load rather than collapse under it.
+
+---
+
+# Non-Blocking
+
+In concurrent programming an algorithm is considered non-blocking if threads competing for a resource do not have their execution indefinitely postponed by mutual exclusion protecting that resource.
+
+In practice this usually manifests as an API that allows access to the resource if it is available otherwise it immediately returns informing the caller that the operation has been initiated and not yet completed.
+
+A non-blocking API to a resource allows the caller the option to do other work rather than be blocked waiting on the resource to become available.
+
+This may be complemented by allowing the client of the resource to register for getting notified when the resource is available or the operation has completed.
+
+
+---
+
 # Reactive Programming
 
 An asynchronous programming paradigm concerned with **data streams and the propagation of change**.
@@ -114,6 +141,10 @@ An asynchronous programming paradigm concerned with **data streams and the propa
 Observable emits streams of data which the Observer listens and reacts to, setting in motion a chain of operations on the data stream.
 
 Operators allow you to transform, combine, manipulate, and work with the sequences of items emitted by Observables.
+
+---
+
+# Reactive Programming
 
 ![](6-reactive/flowable.png)
 

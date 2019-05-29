@@ -11,6 +11,7 @@ Como implementación requerida habrá que implementar un `ResourceProvider` para
 
 ```
 interface Resource {
+	defaul String id() { return this.link(); }
 	String link();
 	String label();
 }
@@ -50,5 +51,14 @@ enum ChangeType {
 ```
 
 Implementar un NewsStream que extienda de Observable<ResourceChange> y combine todas las instancias de ResourceStream que se creen por cada provider configurado en un Multibinder<ResourceProvider>.
+	
+```
+public class NewsStream extends Observable<ResourceChange> {
+    @Inject public NewsStream(@NotNull Set<NewsPaperProvider> providers) {
+        // ...
+    }
+    // ...    
+}
+```    
 
 ![Merge Streams](../4-behaviour/merge.png)

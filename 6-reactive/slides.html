@@ -1,0 +1,119 @@
+---
+title: Reactive
+layout: remark
+permalink: /reactive
+---
+
+class: center, middle, inverse
+
+# Dependency Injection & Reactive Programming
+## Diseño Avanzado Orientado a Objetos
+
+---
+
+# Dependency
+
+- Dependency or dependent means relying on something for support
+
+![](6-reactive/dependency.jpeg)
+
+---
+
+# Dependency Injection
+
+![](6-reactive/injection.png)
+
+---
+
+# Dependency injection
+
+Types:
+- Constructor injection: the dependencies are provided through a class constructor.
+- Setter injection: the client exposes a setter method that the injector uses to inject the dependency.
+
+
+So now its the dependency injection’s responsibility to:
+- Create the objects
+- Know which classes require those objects
+- And provide them all those objects
+
+---
+
+# Inversion of control
+
+It is the fifth principle of S.O.L.I.D which states that *a class should depend on abstraction and not upon concretions* (in simple terms, hard-coded).
+
+According to the principles, a class should concentrate on fulfilling its responsibilities and not on creating objects that it requires to fulfill those responsibilities.
+
+And that’s where dependency injection comes into play: it provides the class with the required objects.
+
+---
+
+# Benefits of using Dependency Injection
+
+- Helps in Unit testing.
+- Boiler plate code is reduced, as initializing of dependencies is done by the injector component.
+- Extending the application becomes easier.
+- Helps to enable loose coupling, which is important in application programming.
+
+---
+
+# Disadvantages of Dependency Injection
+
+- If overused, can lead to management issues and other problems.
+- Many compile time errors are pushed to run-time.
+- Can hinder use of IDE automation, such as “find references”, “show call hierarchy” and safe refactoring.
+
+---
+
+# The Reactive Manifesto
+
+- Systems built as Reactive Systems are more flexible, loosely-coupled and scalable.
+- They are significantly more tolerant of failure and when failure does occur they meet it with elegance rather than disaster.
+- Reactive Systems are highly responsive, giving users effective interactive feedback.
+
+???
+
+https://www.reactivemanifesto.org/
+
+---
+
+# Reactive Systems
+
+- Responsive:
+The system responds in a timely manner if at all possible. Responsiveness is the cornerstone of usability and utility, but more than that, *responsiveness means that problems may be detected quickly and dealt with effectively.*
+
+- Resilient:
+The system stays responsive in the face of failure. Any system that is not resilient will be unresponsive after a failure.
+Failures are contained within each component, isolating components from each other and thereby ensuring that parts of the system can fail and recover without compromising the system as a whole.
+Recovery of each component is delegated to another (external) component, and high-availability is ensured by replication where necessary.
+The client of a component is not burdened with handling its failures.
+
+- Elastic:
+The system stays responsive under varying workload.
+React to changes in the input rate by increasing or decreasing the resources allocated to service these inputs.
+The ability to shard or replicate components and distribute inputs among them.
+
+- Message Driven:
+Rely on asynchronous message-passing to establish a boundary between components that ensures loose coupling and isolation. This boundary also provides the means to delegate failures as messages.
+Employing explicit message-passing enables load management, elasticity, and flow control by shaping and monitoring the message queues in the system and applying back-pressure when necessary.
+Non-blocking communication allows recipients to only consume resources while active, leading to less system overhead.
+
+---
+
+# Reactive Programming
+
+An asynchronous programming paradigm concerned with *data streams and the propagation of change*.
+
+Observable emits streams of data which the Observer listens and reacts to, setting in motion a chain of operations on the data stream.
+
+Operators allow you to transform, combine, manipulate, and work with the sequences of items emitted by Observables.
+
+![](6-reactive/flowable.png)
+
+???
+
+Publisher-suscriber
+Observable-Observer
+
+---

@@ -20,6 +20,10 @@ class: center, middle, inverse
 - Composite
 - Proxy
 
+???
+
+Structural patterns are concerned with how classes and objects are composed to form larger structures
+
 ---
 
 # Façade
@@ -32,6 +36,10 @@ class: center, middle, inverse
 
 - Provide a unified interface to a set of interfaces in a subsystem
 
+???
+
+Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
+
 --
 
 - Façade defines a higher-level interface that makes the subsystem easier to use
@@ -40,7 +48,7 @@ class: center, middle, inverse
 
 - Applicability:
 
- - Provide a simple interface to a complex subsystem (The application of design patterns often results in a lot of small classes which makes subsystems more flexible and customizable)
+ - Provide a simple interface to a complex subsystem (the application of design patterns often results in a lot of small classes which makes subsystems more flexible and customizable)
 
 --
 
@@ -68,9 +76,13 @@ class: center, middle, inverse
 
 - Convert the interface of a class into another interface clients expect
 
+???
+
+Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
+
 --
 
-- Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces
+- Adapter lets classes work together that couldn't otherwise because of incompatible interfaces
 
 --
 
@@ -150,6 +162,12 @@ class: center, middle, inverse
 remove responsibilities to a class, and when subclassing would be impossible due to the
 large number of subclasses that could result
 
+???
+
+Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+
+Sometimes we want to add responsibilities to individual objects, not to an entire class.
+
 ---
 
 # Decorator
@@ -167,6 +185,10 @@ large number of subclasses that could result
 # Bridge
 
 ![](3-structural/schedule-1.gif)
+
+???
+
+Decouple an abstraction from its implementation so that the two can vary independently.
 
 ---
 
@@ -226,6 +248,10 @@ Define specializations of the abstraction class if desired
 
 ![](3-structural/composite.png)
 
+???
+
+Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
+
 ---
 
 # Composite
@@ -235,6 +261,10 @@ Define specializations of the abstraction class if desired
 --
 
 - Composite lets clients treat individual objects and compositions of objects uniformly
+
+???
+
+The key to the Composite pattern is an abstract class that represents both primitives and their containers
 
 --
 
@@ -251,6 +281,10 @@ Define specializations of the abstraction class if desired
 # Proxy
 
 ![](3-structural/proxy-aunty.png)
+
+???
+
+Provide a surrogate or placeholder for another object to control access to it.
 
 ---
 

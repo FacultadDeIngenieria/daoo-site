@@ -15,6 +15,10 @@ class: center, middle, inverse
 
 *Identify common communication patterns between objects. Increase flexibility in carrying out this communication.*
 
+???
+
+Behavioral patterns are concerned with algorithms and the assignment of responsibilities between objects
+
 ---
 
 # Behavioural Patterns
@@ -33,9 +37,13 @@ class: center, middle, inverse
 
 - Semejante al composite, sólo que en general este último es de arriba para abajo y el delegate es de abajo para arriba.
 
+???
+
+Delegation is a way of making composition as powerful for reuse as inheritance
+
 --
 
-- Utiliza composición y fowardea un mensaje.
+- Utiliza composición y forwardea un mensaje.
 
 --
 
@@ -50,6 +58,10 @@ class: center, middle, inverse
 - El delegado, es decir `objectB` procesa el request y realiza alguna acción.
 
 ![](4-behaviour/delegate.jpeg)
+
+???
+
+Several design patterns use delegation. The State, Strategy, and Visitor patterns depend on it.
 
 ---
 
@@ -70,20 +82,16 @@ Dado un lenguaje define una representación para su gramática junto con un int�
 - java.util.Pattern and subclasses of java.text.Format are some of the examples of interpreter pattern used in JDK.
 - https://springframework.guru/gang-of-four-design-patterns/interpreter-pattern/
 
+Given a language, define a represention for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
+
 ---
 
 # Interpreter
 
-- Se puede pensar como un caso específico del composite.
-- Se utiliza para cualquier tipo de objeto interpretativo creado en runtime.
-- Caso tipico: filtros.
-- Objetos lightweight pero flexibles.
+- Se puede pensar como un caso específico del composite
+- Se utiliza para cualquier tipo de objeto interpretativo creado en runtime
 
 .center[![](4-behaviour/interpreter-example.png)]
-
-???
-
-Caso tipico: filtros?
 
 ---
 
@@ -93,11 +101,20 @@ Se define una dependencia de uno a muchos entre objetos, de forma tal que cuando
 
 .center[![](4-behaviour/observer.png)]
 
+???
+
+Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+
 ---
 
 # Observer
 
 - Desacopla la interacción entre el objeto que cambia y los objetos a actualizar.
+
+???
+
+A common side-effect of partitioning a system into a collection of cooperating classes is the need to maintain consistency betweenrelated objects.
+You don't want to achieve consistency by making the classes tightly coupled, because that reduces their reusability.
 
 --
 
@@ -123,6 +140,10 @@ Se tiene un conjunto muy numeroso de objetos muy similares entre sí, o un conju
 
 .center[![](4-behaviour/flyweight-trees.png)]
 
+???
+
+Use sharing to support large numbers of fine-grained objects efficiently.
+
 ---
 
 # Flyweight
@@ -144,6 +165,12 @@ La idea es factorizar la parte en común de estos objetos.
 Provee una forma secuencial de acceder los elementos de un objeto compuesto sin exponer la representación subyacente.
 
 .center[![](4-behaviour/iterator.gif)]
+
+???
+
+Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+
+The key idea in this pattern is to take the responsibility for access and traversal out of the list object and put it into an iterator object.
 
 ---
 
@@ -233,13 +260,17 @@ Iterator<Person> it = new FilterIterator<Person>(peopleIterator(), new Predicate
 
 ???
 
-Is FilterIterator this a decorator?
+Is FilterIterator a decorator?
 
 ---
 
 # Command
 
 - Encapsula un request en un objeto.
+
+???
+
+Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
 --
 
@@ -257,13 +288,11 @@ Is FilterIterator this a decorator?
 
 # Command
 
-- Composite commands.
-- Posibilidad de definir macros.
-- Encolar o loggear requests.
-- Undoable redoable operations (historia).
-- Playback.
-- Actions = command + prototype.
-- Manejo centralizado de acciones: utilizando un Singleton.
+- Composite commands
+- Posibilidad de definir macros
+- Encolar o loggear requests
+- Undoable redoable operations (historia)
+- Playback
 
 ---
 
@@ -296,11 +325,36 @@ history.add(c);
 
 ---
 
-# Double dispatch
+# Strategy
 
-- El Double-Dispatch es un mecanismo que “despacha” el llamado a una función a diferentes funciones concretas dependiendo el tipo de dato dinámico de ambos objetos implicados en la llamada.
+- Define una familia de algoritmos, encapsula cada uno y permite el intercambio de los mismos.
+- Los algoritmos pueden varian independientemente de los clientes que los usan.
 
-- Lenguajes como Java no disponen de tal mecanismo ya que son Single-Dispatch y solo controlan el tipo dinámico del objeto al cual se le invoca la llamada.
+???
+
+Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+
+---
+
+# Strategy
+
+.center[![](4-behaviour/strategy.png)]
+
+---
+
+# State
+
+- Le permite a un objeto cambiar su comportamiento cuando cambia su estado estado interno.
+
+???
+
+Allow an object to alter its behavior when its internal state changes.The object will appear to change its class.
+
+---
+
+# State
+
+.center[![](4-behaviour/state.png)]
 
 ---
 
@@ -311,10 +365,6 @@ history.add(c);
 --
 
 - Separa la operación de la estructura del objeto.
-
---
-
-- Simula el Double-Dispatch en un lenguaje convencional orientado a objetos Single-Dispatch.
 
 ---
 

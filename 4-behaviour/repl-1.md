@@ -13,11 +13,11 @@ permalink: /practice/repl-1
 ```java
 public static void main(String[] args) {
         final Environment e = new EnvironmentImpl();
-        e.addOperandParser(new DoubleParser());
-        e.addOperandParser(new LiteralParser());
-        e.addCommandParser(new BinaryArithmeticParser());
-        e.addCommandParser(new LengthParser());
-
+        e.addOperandFactory(new DoubleOperandFactory());
+        e.addOperandFactory(new LiteralOperandFactory());
+        e.addCommandFactory(new BinaryArithmeticCommandFactory());
+        e.addCommandFactory(new LengthCommandFactory());
+        
         final Repl repl = new ReplImpl(e);
         repl.loop(System.in, System.out);
 }

@@ -12,7 +12,7 @@ permalink: /practice/repl-1
 
 ```java
 public static void main(String[] args) {
-        final ParserRegistry r = new ParserRegistryImpl();
+        final Environment r = new EnvironmentImpl();
         r.addOperandParser(new DoubleParser());
         r.addOperandParser(new LiteralParser());
         r.addCommandParser(new BinaryArithmeticParser());

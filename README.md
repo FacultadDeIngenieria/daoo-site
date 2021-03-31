@@ -17,8 +17,7 @@
 1. [Factories, Builders & Fluent Interfaces](practice/creational) (03/03/2021)
 2. [Factories, Builders & Fluent Interfaces](practice/normalization) (10/03/2021)
 3. [Visitor](practice/visitor) (17/03/2021)
-
-[comment]: <> (4. [Repl Console]&#40;practice/repl-1&#41; &#40;17/04/2019&#41;)
+4. [Repl Console](practice/repl-1) (17/04/2019)
 
 [comment]: <> (5. [Repl Console II]&#40;practice/repl-2&#41; &#40;24/04/2019&#41;)
 

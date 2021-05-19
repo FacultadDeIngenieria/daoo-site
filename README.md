@@ -8,8 +8,8 @@
 3. [Structural Patterns](structural) (10/03/2021)
 4. [Behavioural Patterns](behaviour) (17/03/2021) 
 5. [Property Testing](testing) (21/04/2021)
+6. [Dependency Injection and Reactive Programming](reactive) (19/05/2021)
 
-[comment]: <> (6. [Dependency Injection and Reactive Programming]&#40;reactive&#41; &#40;07/04/2021&#41; )
 
 ## Trabajos Prácticos:
 
@@ -19,8 +19,7 @@
 4. [Repl Console](practice/repl-1) (31/03/2021)
 5. [Repl Console II](practice/repl-2) (14/04/2021)
 6. [Property Testing](practice/testing) (21/04/2021)
-
-[comment]: <> (7. [News Stream]&#40;practice/news&#41; &#40;29/05/2019&#41;)
+7. [News Stream](practice/news) (19/05/2021)
 
 ---
 

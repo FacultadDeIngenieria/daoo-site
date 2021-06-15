@@ -9,6 +9,9 @@
 4. [Behavioural Patterns](behaviour) (17/03/2021) 
 5. [Property Testing](testing) (21/04/2021)
 6. [Dependency Injection and Reactive Programming](reactive) (19/05/2021)
+7. [HCI - 1](https://drive.google.com/file/d/0B8UarWURDykec2RIc2RaaUZ2ZmM/view)
+8. [HCI - 2](https://drive.google.com/file/d/0B8UarWURDykeTUtCT1VEd3R6TUE/view)
+9. [HCI - 3](https://drive.google.com/file/d/0B8UarWURDykeMm5ubUk3UlJmRjQ/view)
 
 
 ## Trabajos Prácticos:
